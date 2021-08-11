@@ -5,13 +5,13 @@
     font-family: 'Cabin', sans-serif;
 }
 
-.container img{
+.top img{
     width: 60px;
     height: 60px;
 }
 
 .container {
-    width:1440px;
+    width:100%;
     margin:0 auto;
     display:flex;
     justify-content: center;
@@ -52,16 +52,6 @@
     top: 0;
 }
 
-#start{
-    border: none;
-    font-size: 20px;
-}
-
-#stop{
-    border: none;
-    font-size: 20px;
-}
-
 .watch .i{
     width: 50px;
     height: 100%;
@@ -74,10 +64,19 @@
 .control{
     display: flex;
 }
+
 .control p {
- margin: 0 10px 0 10px;
+    margin: 0 10px 0 10px;
 }
 
-.top{
-    display: flex;
+#start{
+    border: none;
+    font-size: 20px;
+    background-color: rgba(221, 221, 221, 0);
+}
+
+#stop{
+    border: none;
+    font-size: 20px;
+    background-color: rgba(221, 221, 221, 0);
 }

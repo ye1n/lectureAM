@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시계</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="watch">
+            <div class="hour">00</div>
+            <div class="minute">00</div>
+            <div class="second">00</div>
+        </div>
+    </div>
+    
+    <script>
+
+        let log = console.log;
+
+        //현재 시간
+        // let now = new Date();
+        // let h = now.getHours();
+        // let m = now.getMinutes();
+        // let s = now.getSeconds();
+
+        // log(`현재시간은 ${h}시 ${m}분 ${s}초 입니다`);
+
+        //1초마다 시간 출력
+        // let now;
+        // let h;
+        // let m;
+        // let s;
+
+        // function time(){
+        //     now = new Date();
+        //     h = now.getHours();
+        //     m = now.getMinutes();
+        //     s = now.getSeconds();
+        //     console.clear();
+        //     log(`${h}:${m}:${s}`);
+        // }
+
+        // setInterval(time,1000);
+
+        //시.분.초가 10보다 작다면 0 붙이기 _ 1
+
+        // function time(){
+        //     let now = new Date();
+        //     let h = now.getHours();
+        //     let m = now.getMinutes();
+        //     let s = now.getSeconds();
+
+        //     if(h < 10){
+        //         h = "0" + h;
+        //     }if(m < 10){
+        //         m = "0" + m;
+        //     }if(s < 10){
+        //         s = "0" + s;
+        //     }
+
+        //     console.clear();
+        //     log(`${h}:${m}:${s}`);
+        // }
+
+        // setInterval(time,1000);
+
+        //시.분.초가 10보다 작다면 0 붙이기 _ 2
+
+        // function check(t){
+        //     if(t < 10){
+        //         return t = "0" + t;
+        //     }else{
+        //         return t;
+        //     }
+        // }
+
+        // function time(){
+        //     let now = new Date();
+        //     let h = check(now.getHours());
+        //     let m = check(now.getMinutes());
+        //     let s = check(now.getSeconds());
+
+        //     console.clear();
+        //     log(`${h}:${m}:${s}`);
+        // }
+
+        // setInterval(time,1000);
+
+        //시.분.초가 10보다 작다면 0 붙이기 _ 3
+
+        // let now = new Date();
+        // log("00" + now.getHours());
+
+        // function time(){
+        //     let now = new Date();
+        //     let h = ("00" + now.getHours()).substr(-2);
+        //     let m = ("00" + now.getMinutes()).substr(-2);
+        //     let s = ("00" + now.getSeconds()).substr(-2);
+
+        //     console.clear();
+        //     log(`${h}:${m}:${s}`);
+        // }
+
+        // setInterval(time,1000);
+
+
+        //제이쿼리 기초
+
+        // let w = $(".watch");
+        // log(w);
+
+        // text와 html
+        // $(".hour").text("안녕하세요");
+        // $(".hour").html("<h1>안녕하세요</h1>");
+
+        // $(".minute").text("양영디지털고등학교");
+        // $(".second").text("소프트웨어개발과");
+
+        // on과 off
+        // $(".hour").on("이벤트","함수");
+
+        // function 시간클릭(){
+        //     alert("시간이 클릭 되었어요");
+        // }
+
+        // $(".hour").on("click",시간클릭);
+        
+        // 익명함수
+        // $(".hour").on("click", function(){
+        //     alert("시간이 클릭 되었어요");
+        // });
+
+    </script>
+</body>
+</html>

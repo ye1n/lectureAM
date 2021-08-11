@@ -1,75 +1,135 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도제 시작</title>
+    <title>시계</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./app.css">
 </head>
+
 <body>
+
+    <div class="container">
+        
+        <div class="top">
+            <img src="./img/timer.png" alt="">
+        </div>
+        
+        <div class="watch">
+
+            <div class="hour">
+                <div class="box">00</div>
+                <div class="box">00</div>
+            </div>
+
+            <p class="i">:</p>
+
+            <div class="minute">
+                <div class="box">00</div>
+                <div class="box">00</div>
+            </div>
+
+            <p class="i">:</p>
+
+            <div class="second">
+                <div class="box">00</div>
+                <div class="box">00</div>
+            </div>
+            
+        </div>
+
+        <div class="control">
+            <button id="start">START</button>
+            <p>/</p>
+            <button id="stop">STOP</button>
+        </div>
+
+    </div>
+
     <script>
-        let log = console.log;
 
-        // 변수 개념 
-        // let a = 10;
-        // let b = 5;
-        // log(`a + b 의 값은 : ${a + b}`);
+        function timer() {
 
-        // if(a + b > 20){
-        //     log(`a + b 의 값은 : ${a + b}`);
-        // }else{
-        //     log("20보다 작거나 같습니다");
-        // }
-        
-        
-        // 짝수 출력
-        // let re = 0;
-        // for(let i = 0 ; i < 10; i ++){
-        //     if(i % 2 == 0){
-        //         re += i;
-        //     }
-        // }
-        // log(re);
+            //시간 가져오기
+            let now = new Date();
+            let h = ("0" + now.getHours()).substr(-2);
+            let m = ("0" + now.getMinutes()).substr(-2);
+            let s = ("0" + now.getSeconds()).substr(-2);
 
-        // 함수
-        // function fun( a , b){
-        //     return a + b ;
-        // }
-        // let sum = fun(10, 20);
+            //eq_1에 시간 넣기
+            $(".hour .box").eq(1).text(h);
+            $(".minute .box").eq(1).text(m);
+            $(".second .box").eq(1).text(s);
 
-        // log(sum);
-        //Nan not a number
+            //만약 분이 00이라면 시간 슬라이드
+            if (m == "00") {
+                $(".hour .box").eq(0).animate({ "top": "-100%" }, 500);
+                $(".hour .box").eq(1).animate({ "top": 0 }, 500);
+            }
 
-        //일정시간 간격마다 특정 함수를 계속 실행
-        // let num = 0;
-        // function interval(){
-        //     let str = ".";
-        //     for(let i = 0 ; i < num; i ++){
-        //         str += ".";
-        //     }
-        //     log(`박인환 ${str}`);
-        //     num ++
-        // }
-        // 1초가 1000
-        // setInterval(interval, 500);
+            //만약 초가 00이라면 분 슬라이드
+            if (s == "00") {
+                $(".minute .box").eq(0).animate({ "top": "-100%" }, 500);
+                $(".minute .box").eq(1).animate({ "top": 0 }, 500);
+            }
 
-        // let num = 1;
-        // let id = 0; //인터벌 아이디
+            //eq_0 위로 올리기
+            $(".second .box").eq(0).animate({ "top": "-100%" }, 500);
 
-        // function 인터벌()
-        // {
-        //     log(`박인붕 ${".".repeat(num)}`);
-        //     num++;
-        //     if(num > 10){
-        //         clearInterval(id);
-        //     }
-        // }
+            //eq_1 위로 올리기
+            $(".second .box").eq(1).animate({ "top": 0 }, 500);
 
-        // id = setInterval(인터벌, 5000);
-        // log(id);
-        // id = setInterval(인터벌, 5000);
-        // log(id);
-        
+            //setTimeout : 특정 시간이 지난 후 실행
+            setTimeout(function () {
+
+                //eq_0에 시간 넣기
+                $(".hour .box").eq(0).text(h);
+                $(".minute .box").eq(0).text(m);
+                $(".second .box").eq(0).text(s);
+
+                //만약 분이 00이라면 시간 슬라이드
+                if (m == "00") {
+                    $(".hour .box").eq(0).css({ "top": 0 });
+                    $(".hour .box").eq(1).css({ "top": "100%" });
+                }
+
+                //만약 초가 00이라면 분 슬라이드
+                if (s == "00") {
+                    $(".minute .box").eq(0).css({ "top": 0 });
+                    $(".minute .box").eq(1).css({ "top": "100%" });
+                }
+
+                //eq_0 아래로 내리기
+                $(".second .box").eq(0).css({ "top": 0 });
+
+                //eq_1 아래로 내리기
+                $(".second .box").eq(1).css({ "top": "100%" });
+
+            }, 600);
+
+        };
+
+        //start 버튼을 클릭 했을때 
+        $("#start").on("click", function () {
+            //1초마다 timer 함수 반복
+            setInterval(timer, 1000);
+        });
+
+        //stop 버튼을 클릭 했을때 
+        $("#stop").on("click", function () {
+            //interval 초기화
+            clearInterval();
+        });
+
+        // css 추가
+        // start stop 버튼 추가
+        // 변하는 시간만 슬라이드
+
     </script>
+
 </body>
+
 </html>
